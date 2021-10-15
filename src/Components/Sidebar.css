@@ -1,0 +1,69 @@
+.sidebar {
+  margin-top: 10px;
+
+}
+
+.sidebar_btn button {
+  background-color: transparent;
+  border: 1px solid lightgray;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 40px;
+  padding: .4rem 1rem;
+  margin-left: 20px;
+  box-shadow: 2px 2px 2px rgb(215, 219, 219);
+
+}
+
+.sidebar_btn button span {
+  font-size: 14px;
+  font-weight: 600;
+  /* margin-left: 10px;
+  margin-right: 20px;
+  background-color: red; */
+  padding: 0 .3rem;
+  align-items: center;
+}
+
+.sidebar__options {
+  margin-top: .6rem;
+}
+
+.sidebar_option {
+  display: flex;
+
+  align-items: center;
+  padding: 8px 20px;
+  border-radius: 0px 20px 20px 0px;
+}
+
+.sidebar_option:hover {
+  background-color: whitesmoke;
+}
+
+.sidebar_option span {
+  margin-left: 15px;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgb(78, 78, 78);
+}
+
+.sidebar_option-Active {
+  background-color: #e8f0fe;
+}
+
+.sidebar_option-Active span {
+  color: #1967d2;
+}
+
+.progress_bar {
+  padding: 0px 20px;
+
+}
+
+.progress_bar span {
+  display: block;
+  font-size: 13px;
+  color: #333;
+}

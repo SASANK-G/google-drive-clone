@@ -15,7 +15,7 @@ code {
 .App {
 
   display: grid;
-  grid-template-columns: 240px auto 100px;
+  grid-template-columns: 240px auto 50px;
 
 
 }

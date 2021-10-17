@@ -23,17 +23,19 @@ const Data = () => {
 
       </div>
       <div className="data__content">
-        <div className="data__grid">
+        <div className="data_grid">
           <div className="data__file">
+            
             <InsertDriveFileOutlinedIcon/>
             <p>File Name</p>
+            
           </div>
 
           <div className="data__file">
             <InsertDriveFileOutlinedIcon/>
             <p>File Name</p>
           </div>
-          
+
           <div className="data__file">
             <InsertDriveFileOutlinedIcon/>
             <p>File Name</p>

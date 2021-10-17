@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Sidebar.css'
 import AddIcon from '@material-ui/icons/Add';
 import MobileScreenShareTwoToneIcon from '@material-ui/icons/MobileScreenShareTwoTone';
@@ -8,12 +8,74 @@ import QueryBuilderOutlinedIcon from '@material-ui/icons/QueryBuilderOutlined';
 import StarBorderOutlinedIcon from '@material-ui/icons/StarBorderOutlined';
 import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
 import CloudQueueOutlinedIcon from '@material-ui/icons/CloudQueueOutlined';
+import { Modal } from '@material-ui/core';
+
+import firebase from '../firebase'
+import { storage } from '../firebase'
+
+
+
 
 function Sidebar() {
+
+  const [Open, setOpen] = useState(false);
+  const [Uploading, setUploading] = useState(false);
+  const [File, setFile] = useState(null);
+ 
+ 
+  const handleClose=()=>{
+    setOpen(false);
+  }
+
+  const handleOpen=()=>{
+    setOpen(true);
+  }
+
+  const handleChange=(e)=>{
+    if(e.target.files[0])
+    {
+      setFile(e.target.files[0])
+    }
+  }
+
+  const handleUpload=(event)=>{
+    //console.log(e.target.files[0])
+    event.preventDefault();
+    setUploading(true);
+
+    storage.ref(`files/${File.name}`).put(File).then(snapshot=>{
+      //console.log(snapshot)
+    });
+  }
+
+
   return (
+    <>
+    <Modal open={Open} onClose={handleClose}>
+      <div className="modal__pop">
+        <form>
+          <div className="modalHeading">
+            <h3>Select File you want to upload</h3>
+          </div>
+          <div className="modalBody">
+            {
+              Uploading?(<p className="uploading">Uploading</p>):(
+                <>
+                  <input type="file" onChange={handleChange}></input>
+                  <input type="submit" className="post_submit" onClick={handleUpload}></input>
+                </>
+              )
+            }
+            
+          </div>
+        </form>
+      </div>
+
+    </Modal>
+
     <div className="sidebar">
       <div className="sidebar_btn">
-        <button>
+        <button onClick={handleOpen}>
           <span>
             <AddIcon/>
           </span>
@@ -68,6 +130,7 @@ function Sidebar() {
         </div>
       </div>
     </div>
+    </>
   )
 }
 

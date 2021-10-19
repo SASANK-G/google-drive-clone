@@ -10,8 +10,8 @@ import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined'
 import CloudQueueOutlinedIcon from '@material-ui/icons/CloudQueueOutlined';
 import { Modal } from '@material-ui/core';
 
-import firebase from '../firebase'
-import { storage } from '../firebase'
+import firebase from 'firebase'
+import { db, storage } from '../firebase'
 
 
 
@@ -45,6 +45,18 @@ function Sidebar() {
 
     storage.ref(`files/${File.name}`).put(File).then(snapshot=>{
       //console.log(snapshot)
+      storage.ref("files").child(File.name).getDownloadURL().then(url=>{
+        db.collection("myfiles").add({
+          timestamp:firebase.firestore.FieldValue.serverTimestamp(),
+          filename:File.name,
+          fileURL:url,
+          size:snapshot._delegate.bytesTransferred
+        })
+        setUploading(false);
+        setFile(null);
+        setOpen(false);
+
+      })
     });
   }
 

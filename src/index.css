@@ -19,3 +19,35 @@ code {
 
 
 }
+
+.loginWrap img {
+  width: 100px;
+  padding: 1rem 0;
+}
+
+.loginWrap {
+
+  background: rgb(255, 255, 255);
+  padding: 1.5rem;
+  width: 400px;
+  margin: 0px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 200px;
+}
+
+.loginWrap button {
+
+  background: #2381fa;
+  padding: 1rem 1.5rem;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: .8rem;
+  border: 0;
+  outline: 0;
+  border-radius: 1.5rem;
+  cursor: pointer;
+
+}

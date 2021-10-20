@@ -7,7 +7,7 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import AppsIcon from '@material-ui/icons/Apps';
 import { Avatar } from '@material-ui/core';
 
-function Header() {
+function Header({photoURL}) {
   return (
     <div className="header">
       <div className="header__logo">
@@ -30,7 +30,7 @@ function Header() {
         </span>
         <span>
           <AppsIcon/>
-          <Avatar/>
+          <Avatar src={photoURL}/>
         </span>
         
       </div>

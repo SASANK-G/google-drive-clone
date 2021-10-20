@@ -20,7 +20,7 @@ function Sidebar() {
 
   const [Open, setOpen] = useState(false);
   const [Uploading, setUploading] = useState(false);
-  const [File, setFile] = useState(null);
+  const [file, setFile] = useState(null);
  
  
   const handleClose=()=>{
@@ -43,12 +43,12 @@ function Sidebar() {
     event.preventDefault();
     setUploading(true);
 
-    storage.ref(`files/${File.name}`).put(File).then(snapshot=>{
+    storage.ref(`files/${file.name}`).put(file).then(snapshot=>{
       //console.log(snapshot)
-      storage.ref("files").child(File.name).getDownloadURL().then(url=>{
+      storage.ref("files").child(file.name).getDownloadURL().then(url=>{
         db.collection("myfiles").add({
           timestamp:firebase.firestore.FieldValue.serverTimestamp(),
-          filename:File.name,
+          filename:file.name,
           fileURL:url,
           size:snapshot._delegate.bytesTransferred
         })
